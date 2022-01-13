@@ -1,0 +1,150 @@
+$color-primary: #ff2e63;
+$color-secondary: #3282b8;
+$color-dark: #212121;
+$color-light: #eaffd0;
+
+body {
+  font-family: "Roboto", sans-serif !important;
+  // height: 100vh !important;
+  background: linear-gradient(
+    360deg,
+    rgba(255, 46, 99, 1) 0%,
+    rgba(50, 130, 184, 1) 100%
+  ) !important;
+  background-repeat: no-repeat !important;
+}
+
+p,
+a,
+.btn {
+  font-size: 14px !important;
+}
+
+a,
+.btn {
+  font-weight: 500 !important;
+}
+
+@mixin setShadow($amount) {
+  box-shadow: 0 0 10px rgba($color: $color-dark, $alpha: $amount) !important;
+}
+
+.btn {
+  @include setShadow(0.2);
+}
+
+@mixin setBtnHover($color) {
+  border: 1px solid darken($color: $color, $amount: 5) !important;
+  background: darken($color: $color, $amount: 5) !important;
+}
+
+@mixin setBtnActive($color) {
+  border: 1px solid darken($color: $color, $amount: 10) !important;
+  background: darken($color: $color, $amount: 10) !important;
+}
+
+@mixin setBtns($bg-color, $fr-color) {
+  background: $bg-color !important;
+  color: $fr-color !important;
+  border: 1px solid $bg-color !important;
+  &:hover {
+    @include setBtnHover($bg-color);
+  }
+  &:active {
+    @include setBtnActive($bg-color);
+  }
+}
+
+.btn-primary {
+  @include setBtns($color-primary, $color-light);
+}
+
+.btn-secondary {
+  @include setBtns($color-secondary, $color-light);
+}
+
+.btn-dark {
+  @include setBtns($color-dark, $color-light);
+}
+
+.btn-light {
+  @include setBtns($color-light, $color-dark);
+}
+
+@mixin setBgs($color) {
+  background: $color !important;
+}
+
+.bg-primary {
+  @include setBgs($color-primary);
+}
+
+.bg-secondary {
+  @include setBgs($color-secondary);
+}
+
+.bg-dark {
+  @include setBgs($color-dark);
+}
+
+.bg-light {
+  @include setBgs($color-light);
+}
+
+.shadow {
+  @include setShadow(0.2);
+}
+
+.rounded {
+  border-radius: 10px !important;
+}
+
+.active-question {
+  @include setBgs($color-primary);
+}
+
+main {
+  .container {
+    height: 100vh !important;
+    .row {
+      height: 100vh !important;
+      .card {
+        top: 50% !important;
+        transform: translate(0%, -50%) !important;
+        background: transparentize(
+          $color: $color-light,
+          $amount: 0.5
+        ) !important;
+        .card-body {
+          button.btn-answer {
+            display: block !important;
+            width: 100% !important;
+            margin: 10px 0 10px 0 !important;
+            padding: 10px !important;
+            text-align: left !important;
+          }
+        }
+      }
+    }
+  }
+  #nav-questions {
+    span {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+#btn-continue {
+  animation: continueBtn 0.5s ease-out;
+}
+
+@keyframes continueBtn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
