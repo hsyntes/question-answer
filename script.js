@@ -120,12 +120,10 @@ let previousRnds = [];
 
 const produceRandomNumber = function () {
   let rnd = Math.floor(Math.random() * QuestionsAndAnswers.length);
-  console.log(`rnd: ${rnd}`);
 
   if (previousRnds.length >= 1) {
     for (let i = 0; i < previousRnds.length; i++) {
       while (previousRnds.indexOf(rnd) !== -1) {
-        console.log(`Repeat value: ${rnd}`);
         rnd = Math.floor(Math.random() * QuestionsAndAnswers.length);
       }
     }
@@ -138,12 +136,6 @@ let rndQ;
 const createQA = function () {
   rndQ = produceRandomNumber();
   previousRnds.push(rndQ);
-
-  console.log(`rndQ: ${rndQ}`);
-
-  for (let i = 0; i < previousRnds.length; i++) {
-    console.log(`${i + 1}. element of Array: ${previousRnds[i]}`);
-  }
 
   questionTitle.textContent = QuestionsAndAnswers[rndQ].question;
 
